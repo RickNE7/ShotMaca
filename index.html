@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYMACA - Estrategia de Exportación</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Animaciones personalizadas */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos para las pestañas */
+        .tab-btn.active {
+            color: #d97706; /* amber-600 */
+            border-bottom: 2px solid #d97706;
+            background-color: #fffbeb; /* amber-50 */
+        }
+
+        /* Estilos para tarjetas PESTEL */
+        .pestel-card {
+            transition: all 0.3s ease;
+        }
+        .pestel-card.active {
+            border-color: #f59e0b; /* amber-500 */
+            background-color: #fffbeb; /* amber-50 */
+            transform: scale(1.02);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden min-h-[800px] flex flex-col">
+        
+        <!-- HEADER -->
+        <header class="bg-stone-900 text-white p-8 relative overflow-hidden">
+            <div class="relative z-10 flex justify-between items-start">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-amber-500">AYMACA</h1>
+                    <h2 class="text-xl md:text-2xl font-light text-gray-300 mt-2">Estrategia de Exportación: USA 🇺🇸</h2>
+                </div>
+                <div class="text-right hidden md:block">
+                    <p class="text-sm text-gray-400">Curso: Internacionalización de Empresas</p>
+                    <p class="text-sm text-gray-400">Grupo 2 - 2025</p>
+                </div>
+            </div>
+            <!-- Elemento decorativo de fondo -->
+            <div class="absolute bottom-0 right-0 w-full h-24 bg-gradient-to-t from-stone-800 to-transparent opacity-50 pointer-events-none"></div>
+        </header>
+
+        <!-- NAVEGACIÓN -->
+        <nav class="flex overflow-x-auto bg-white border-b border-stone-200 sticky top-0 z-20 shadow-sm">
+            <button onclick="switchTab('producto')" class="tab-btn active flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-producto">
+                <i data-lucide="zap" class="w-5 h-5"></i> El Producto
+            </button>
+            <button onclick="switchTab('mercado')" class="tab-btn flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-mercado">
+                <i data-lucide="globe" class="w-5 h-5"></i> Mercado (USA)
+            </button>
+            <button onclick="switchTab('pestel')" class="tab-btn flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-pestel">
+                <i data-lucide="brain" class="w-5 h-5"></i> Análisis PESTEL
+            </button>
+            <button onclick="switchTab('logistica')" class="tab-btn flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-logistica">
+                <i data-lucide="truck" class="w-5 h-5"></i> Logística
+            </button>
+            <button onclick="switchTab('flujo')" class="tab-btn flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-flujo">
+                <i data-lucide="file-text" class="w-5 h-5"></i> Documentación
+            </button>
+        </nav>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="p-6 md:p-8 flex-grow bg-stone-50">
+
+            <!-- TAB: PRODUCTO -->
+            <div id="tab-producto" class="tab-content animate-fade-in">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <!-- Tarjeta Principal del Producto -->
+                    <div class="bg-stone-800 p-8 rounded-2xl text-white shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-amber-600 rounded-full blur-3xl opacity-20 -mr-10 -mt-10"></div>
+                        <h3 class="text-3xl font-bold text-amber-500 mb-2">AYMACA</h3>
+                        <p class="text-xl italic text-gray-300 mb-6">"A Shot from the Andes"</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-amber-600/20 p-2 rounded-lg"><i data-lucide="zap" class="text-amber-500"></i></div>
+                                <span>Energía Natural (Maca Negra)</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-amber-600/20 p-2 rounded-lg"><i data-lucide="brain" class="text-amber-500"></i></div>
+                                <span>Enfoque Mental (Nootrópico)</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-amber-600/20 p-2 rounded-lg"><i data-lucide="leaf" class="text-amber-500"></i></div>
+                                <span>Etiqueta Limpia (Sin Azúcar/Gluten)</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-stone-600">
+                            <p class="text-sm text-gray-400">Formato: Jelly Stick (Gel Bebible) 50g</p>
+                            <p class="text-sm text-gray-400">Ingredientes Clave: Maca Negra + Magnesio + Vit. B6/B12</p>
+                        </div>
+                    </div>
+
+                    <!-- Propuesta de Valor -->
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-stone-800">Propuesta de Valor</h3>
+                        <p class="text-gray-600">
+                            Innovación tecnológica transformando la harina tradicional en un <strong>gel hidro-soluble</strong>. 
+                            Diseñado para combatir la "pill fatigue" (cansancio de pastillas) y ofrecer conveniencia.
+                        </p>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-200">
+                            <h4 class="font-semibold text-amber-600 mb-2">Diferenciación</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>Uso exclusivo de <strong>Maca Negra</strong> (mayor potencia cognitiva/física).</li>
+                                <li>Formato "On-the-go" (No requiere agua).</li>
+                                <li>Certificaciones: Vegan, Non-GMO, Gluten-Free.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: MERCADO -->
+            <div id="tab-mercado" class="tab-content hidden animate-fade-in">
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-blue-900 to-stone-900 p-8 rounded-2xl text-white flex flex-col md:flex-row justify-between items-center shadow-lg">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-2 flex items-center gap-2">
+                                <i data-lucide="map-pin" class="text-amber-500"></i> Los Ángeles, California
+                            </h3>
+                            <p class="text-blue-200">Mercado Objetivo (USA)</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 text-right">
+                            <p class="text-4xl font-bold text-amber-500">$54.8 MM</p>
+                            <p class="text-xs text-gray-300">Mercado Suplementos EE.UU (2024)</p>
+                        </div>
+                    </div>
+       
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-amber-500">
+                            <h4 class="font-bold text-stone-800 mb-2">Tamaño & Madurez</h4>
+                            <p class="text-sm text-gray-600">EE.UU. representa >90% del mercado de Norteamérica. Consumidor educado en "Superfoods".</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-amber-500">
+                            <h4 class="font-bold text-stone-800 mb-2">Formato Gummy/Jelly</h4>
+                            <p class="text-sm text-gray-600">Preferencia masiva por masticables. Mercado >$10 mil millones proyectado.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-amber-500">
+                            <h4 class="font-bold text-stone-800 mb-2">Diáspora Latina</h4>
+                            <p class="text-sm text-gray-600">California es la puerta de entrada. Alta afinidad cultural con productos andinos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: PESTEL -->
+            <div id="tab-pestel" class="tab-content hidden animate-fade-in">
+                <h3 class="text-2xl font-bold text-stone-800 mb-6 text-center">Análisis PESTEL: Factores Externos</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="pestel-grid">
+                    <!-- Cards will be populated by JS for cleaner HTML, or hardcoded below with interaction logic -->
+                    
+                    <!-- Político -->
+                    <div class="pestel-card cursor-pointer p-6 rounded-xl border-2 border-stone-200 bg-white hover:border-amber-300" onclick="togglePestel(this)">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-2 rounded-full bg-stone-100 text-stone-600 icon-box"><i data-lucide="shield-check"></i></div>
+                            <h4 class="font-bold text-lg text-stone-800">Político</h4>
+                        </div>
+                        <div class="details hidden animate-fade-in">
+                            <p class="text-sm text-gray-700 mb-2 font-medium">Supervisión FDA (NDIN/GRAS) y Tratado de Libre Comercio Perú-EE.UU. (Arancel 0%).</p>
+                            <div class="bg-white p-2 rounded border border-amber-200 text-xs text-amber-800">
+                                <strong>Estrategia:</strong> Mantener certificación cGMP y etiquetado adaptable.
+                            </div>
+                        </div>
+                        <p class="hint text-xs text-gray-400 text-center mt-2">Click para ver detalles</p>
+                    </div>
+
+                    <!-- Económico -->
+                    <div class="pestel-card cursor-pointer p-6 rounded-xl border-2 border-stone-200 bg-white hover:border-amber-300" onclick="togglePestel(this)">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-2 rounded-full bg-stone-100 text-stone-600 icon-box"><i data-lucide="trending-up"></i></div>
+                            <h4 class="font-bold text-lg text-stone-800">Económico</h4>
+                        </div>
+                        <div class="details hidden animate-fade-in">
+                            <p class="text-sm text-gray-700 mb-2 font-medium">EE.UU. domina el 35% del mercado global de maca. Crecimiento de alimentos funcionales (10.33% CAGR).</p>
+                            <div class="bg-white p-2 rounded border border-amber-200 text-xs text-amber-800">
+                                <strong>Estrategia:</strong> Destacar valor premium y origen andino.
+                            </div>
+                        </div>
+                        <p class="hint text-xs text-gray-400 text-center mt-2">Click para ver detalles</p>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="pestel-card cursor-pointer p-6 rounded-xl border-2 border-stone-200 bg-white hover:border-amber-300" onclick="togglePestel(this)">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-2 rounded-full bg-stone-100 text-stone-600 icon-box"><i data-lucide="users"></i></div>
+                            <h4 class="font-bold text-lg text-stone-800">Social</h4>
+                        </div>
+                        <div class="details hidden animate-fade-in">
+                            <p class="text-sm text-gray-700 mb-2 font-medium">Tendencia "Convenience" (formatos fáciles). Auge de adaptógenos para manejo del estrés y energía.</p>
+                            <div class="bg-white p-2 rounded border border-amber-200 text-xs text-amber-800">
+                                <strong>Estrategia:</strong> Marketing enfocado en bienestar mental y productividad.
+                            </div>
+                        </div>
+                        <p class="hint text-xs text-gray-400 text-center mt-2">Click para ver detalles</p>
+                    </div>
+
+                    <!-- Tecnológico -->
+                    <div class="pestel-card cursor-pointer p-6 rounded-xl border-2 border-stone-200 bg-white hover:border-amber-300" onclick="togglePestel(this)">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-2 rounded-full bg-stone-100 text-stone-600 icon-box"><i data-lucide="smartphone"></i></div>
+                            <h4 class="font-bold text-lg text-stone-800">Tecnológico</h4>
+                        </div>
+                        <div class="details hidden animate-fade-in">
+                            <p class="text-sm text-gray-700 mb-2 font-medium">Trazabilidad digital (Blockchain) y E-commerce como validador de confianza.</p>
+                            <div class="bg-white p-2 rounded border border-amber-200 text-xs text-amber-800">
+                                <strong>Estrategia:</strong> Código QR "Farm to Fork" para ver origen.
+                            </div>
+                        </div>
+                        <p class="hint text-xs text-gray-400 text-center mt-2">Click para ver detalles</p>
+                    </div>
+
+                    <!-- Ecológico -->
+                    <div class="pestel-card cursor-pointer p-6 rounded-xl border-2 border-stone-200 bg-white hover:border-amber-300" onclick="togglePestel(this)">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-2 rounded-full bg-stone-100 text-stone-600 icon-box"><i data-lucide="leaf"></i></div>
+                            <h4 class="font-bold text-lg text-stone-800">Ecológico</h4>
+                        </div>
+                        <div class="details hidden animate-fade-in">
+                            <p class="text-sm text-gray-700 mb-2 font-medium">Alta demanda de orgánicos y plant-based. Reto: Empaque sachet trilaminado.</p>
+                            <div class="bg-white p-2 rounded border border-amber-200 text-xs text-amber-800">
+                                <strong>Estrategia:</strong> Priorizar certificación USDA Organic y compensación de huella.
+                            </div>
+                        </div>
+                        <p class="hint text-xs text-gray-400 text-center mt-2">Click para ver detalles</p>
+                    </div>
+
+                    <!-- Legal -->
+                    <div class="pestel-card cursor-pointer p-6 rounded-xl border-2 border-stone-200 bg-white hover:border-amber-300" onclick="togglePestel(this)">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-2 rounded-full bg-stone-100 text-stone-600 icon-box"><i data-lucide="scale"></i></div>
+                            <h4 class="font-bold text-lg text-stone-800">Legal</h4>
+                        </div>
+                        <div class="details hidden animate-fade-in">
+                            <p class="text-sm text-gray-700 mb-2 font-medium">Normativas estrictas sobre "Health Claims" (FDA/FTC). Ley 65 de California.</p>
+                            <div class="bg-white p-2 rounded border border-amber-200 text-xs text-amber-800">
+                                <strong>Estrategia:</strong> Revisión legal estricta de etiquetas y registro de marca USPTO.
+                            </div>
+                        </div>
+                        <p class="hint text-xs text-gray-400 text-center mt-2">Click para ver detalles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: LOGÍSTICA -->
+            <div id="tab-logistica" class="tab-content hidden animate-fade-in">
+                <div class="space-y-8">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-stone-800">Cadena Logística de Exportación</h3>
+                        <p class="text-gray-500">De la unidad al contenedor</p>
+                    </div>
+
+                    <div class="relative">
+                        <!-- Línea conectora -->
+                        <div class="absolute top-1/2 left-0 w-full h-1 bg-stone-200 -z-10 hidden md:block transform -translate-y-8"></div>
+                        
+                        <div class="grid md:grid-cols-4 gap-6">
+                            <!-- Paso 1 -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-100 flex flex-col items-center text-center transform transition hover:-translate-y-2">
+                                <div class="bg-amber-100 p-4 rounded-full text-amber-600 mb-4"><i data-lucide="package"></i></div>
+                                <h4 class="font-bold text-stone-800 mb-1">Empaque Primario</h4>
+                                <p class="text-sm text-gray-600">Sachet Jelly Stick (50g)</p>
+                            </div>
+                            <!-- Paso 2 -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-100 flex flex-col items-center text-center transform transition hover:-translate-y-2">
+                                <div class="bg-amber-100 p-4 rounded-full text-amber-600 mb-4"><i data-lucide="box"></i></div>
+                                <h4 class="font-bold text-stone-800 mb-1">Empaque Secundario</h4>
+                                <p class="text-sm text-gray-600">Display Box (15 sticks)</p>
+                            </div>
+                            <!-- Paso 3 -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-100 flex flex-col items-center text-center transform transition hover:-translate-y-2">
+                                <div class="bg-amber-100 p-4 rounded-full text-amber-600 mb-4"><i data-lucide="box" class="w-8 h-8"></i></div>
+                                <h4 class="font-bold text-stone-800 mb-1">Caja Máster</h4>
+                                <p class="text-sm text-gray-600">12 Displays (180 sticks)</p>
+                            </div>
+                            <!-- Paso 4 -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-100 flex flex-col items-center text-center transform transition hover:-translate-y-2">
+                                <div class="bg-amber-100 p-4 rounded-full text-amber-600 mb-4"><i data-lucide="truck"></i></div>
+                                <h4 class="font-bold text-stone-800 mb-1">Palletización</h4>
+                                <p class="text-sm text-gray-600">50 Cajas Máster (9,000 sticks)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 mt-8">
+                        <h4 class="font-bold text-stone-800 mb-4 flex items-center gap-2"><i data-lucide="info"></i> Datos Clave de Almacenamiento</h4>
+                        <ul class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-green-600 w-4 h-4"></i> Vida útil: 18 meses (ambiente).</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-green-600 w-4 h-4"></i> Temperatura: 20°C a 25°C.</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-green-600 w-4 h-4"></i> Peso Bruto Pallet: ~750 kg.</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-green-600 w-4 h-4"></i> Dimensiones Pallet: 120x100x135 cm.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: FLUJO -->
+            <div id="tab-flujo" class="tab-content hidden animate-fade-in">
+                <h3 class="text-2xl font-bold text-stone-800 mb-6 text-center">Flujo Documentario y Trazabilidad</h3>
+                <div class="space-y-4 max-w-2xl mx-auto">
+                    <!-- Step 1 -->
+                    <div class="flex items-center bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500">
+                        <div class="w-12 h-12 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">1</div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-stone-800">Habilitación</h4>
+                            <p class="text-sm text-gray-600">Buenas Prácticas (cGMP) y Libre Venta (CLV)</p>
+                        </div>
+                        <div class="hidden md:block bg-stone-100 px-3 py-1 rounded text-xs font-semibold text-stone-500">DIGESA</div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex items-center bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500">
+                        <div class="w-12 h-12 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">2</div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-stone-800">Producción</h4>
+                            <p class="text-sm text-gray-600">Lote LOT-20251101-LA</p>
+                        </div>
+                        <div class="hidden md:block bg-stone-100 px-3 py-1 rounded text-xs font-semibold text-stone-500">Planta</div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex items-center bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500">
+                        <div class="w-12 h-12 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">3</div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-stone-800">Calidad</h4>
+                            <p class="text-sm text-gray-600">Certificado de Análisis (CoA)</p>
+                        </div>
+                        <div class="hidden md:block bg-stone-100 px-3 py-1 rounded text-xs font-semibold text-stone-500">Lab</div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flex items-center bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500">
+                        <div class="w-12 h-12 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">4</div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-stone-800">Gestión</h4>
+                            <p class="text-sm text-gray-600">Factura y Packing List</p>
+                        </div>
+                        <div class="hidden md:block bg-stone-100 px-3 py-1 rounded text-xs font-semibold text-stone-500">Comercial</div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="flex items-center bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500">
+                        <div class="w-12 h-12 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">5</div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-stone-800">Embarque</h4>
+                            <p class="text-sm text-gray-600">Bill of Lading y Seguro</p>
+                        </div>
+                        <div class="hidden md:block bg-stone-100 px-3 py-1 rounded text-xs font-semibold text-stone-500">Logística</div>
+                    </div>
+                </div>
+                <div class="mt-6 text-center text-sm text-gray-500 italic">
+                    *Todos los documentos (CoA, BL, Invoice) están disponibles en el Anexo C del informe.
+                </div>
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-stone-900 text-stone-400 p-6 text-center text-sm">
+            <p>© 2025 Grupo 2 | Basado en "Tarea Grupal 1 (borrador 3).pdf"</p>
+            <p class="text-xs mt-1 text-stone-600">Integrantes: Córdova, Medina, Mozombite, Rosas, Taya, Tornero.</p>
+        </footer>
+    </div>
+
+    <!-- LOGICA JAVASCRIPT -->
+    <script>
+        // Inicializar Iconos Lucide
+        lucide.createIcons();
+
+        // Lógica de Pestañas (Tabs)
+        function switchTab(tabId) {
+            // 1. Ocultar todos los contenidos
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            // 2. Desactivar todos los botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                // Restaurar estilos inactivos
+                btn.classList.remove('text-amber-600', 'border-b-2', 'border-amber-600', 'bg-amber-50');
+                btn.classList.add('text-stone-500');
+            });
+
+            // 3. Mostrar el contenido seleccionado
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            // 4. Activar el botón seleccionado
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('text-stone-500');
+            // Nota: La clase .active en CSS maneja los colores, pero Tailwind classes ayudan
+        }
+
+        // Lógica de Análisis PESTEL (Acordeón)
+        function togglePestel(cardElement) {
+            // Verificar si ya está activo
+            const isActive = cardElement.classList.contains('active');
+
+            // Cerrar todos primero (comportamiento acordeón exclusivo)
+            const allCards = document.querySelectorAll('.pestel-card');
+            allCards.forEach(card => {
+                card.classList.remove('active');
+                card.querySelector('.details').classList.add('hidden');
+                card.querySelector('.hint').classList.remove('hidden');
+                
+                // Resetear icono y colores
+                const iconBox = card.querySelector('.icon-box');
+                iconBox.classList.remove('bg-amber-500', 'text-white');
+                iconBox.classList.add('bg-stone-100', 'text-stone-600');
+            });
+
+            // Si no estaba activo, activarlo ahora
+            if (!isActive) {
+                cardElement.classList.add('active');
+                cardElement.querySelector('.details').classList.remove('hidden');
+                cardElement.querySelector('.hint').classList.add('hidden');
+
+                // Cambiar estilo del icono
+                const iconBox = cardElement.querySelector('.icon-box');
+                iconBox.classList.remove('bg-stone-100', 'text-stone-600');
+                iconBox.classList.add('bg-amber-500', 'text-white');
+            }
+        }
+    </script>
+</body>
+</html>
