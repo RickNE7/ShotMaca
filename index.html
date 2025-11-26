@@ -36,6 +36,15 @@
             transform: scale(1.02);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+
+        /* Estilos para botones de archivos */
+        .file-card {
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .file-card:hover {
+            transform: translateY(-2px);
+            border-color: #d97706; /* amber-600 */
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800 font-sans min-h-screen p-4 md:p-8">
@@ -74,6 +83,9 @@
             </button>
             <button onclick="switchTab('flujo')" class="tab-btn flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-flujo">
                 <i data-lucide="file-text" class="w-5 h-5"></i> Documentación
+            </button>
+            <button onclick="switchTab('anexos')" class="tab-btn flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-anexos">
+                <i data-lucide="paperclip" class="w-5 h-5"></i> Anexos
             </button>
         </nav>
 
@@ -164,7 +176,6 @@
             <div id="tab-pestel" class="tab-content hidden animate-fade-in">
                 <h3 class="text-2xl font-bold text-stone-800 mb-6 text-center">Análisis PESTEL: Factores Externos</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="pestel-grid">
-                    <!-- Cards will be populated by JS for cleaner HTML, or hardcoded below with interaction logic -->
                     
                     <!-- Político -->
                     <div class="pestel-card cursor-pointer p-6 rounded-xl border-2 border-stone-200 bg-white hover:border-amber-300" onclick="togglePestel(this)">
@@ -362,6 +373,126 @@
                 </div>
                 <div class="mt-6 text-center text-sm text-gray-500 italic">
                     *Todos los documentos (CoA, BL, Invoice) están disponibles en el Anexo C del informe.
+                </div>
+            </div>
+
+             <!-- TAB: ANEXOS (NUEVO) -->
+             <div id="tab-anexos" class="tab-content hidden animate-fade-in">
+                <h3 class="text-2xl font-bold text-stone-800 mb-6 text-center">Centro de Recursos y Anexos</h3>
+                
+                <div class="space-y-8">
+                    <!-- ANEXO A -->
+                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden">
+                        <div class="bg-amber-600 p-4 text-white">
+                            <h4 class="font-bold flex items-center gap-2"><i data-lucide="file-check"></i> Anexo A: Fichas Técnicas</h4>
+                        </div>
+                        <div class="p-6 grid md:grid-cols-2 gap-4">
+                            <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/A1_FichaENG.pdf" target="_blank" class="file-card block bg-stone-50 p-4 rounded-lg border border-stone-200 hover:shadow-md flex items-center justify-between group">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-amber-100 p-3 rounded-full text-amber-700 group-hover:bg-amber-200"><i data-lucide="file-text"></i></div>
+                                    <div>
+                                        <h5 class="font-bold text-stone-800">English Datasheet (A1)</h5>
+                                        <p class="text-xs text-stone-500">PDF • Version for USA Market</p>
+                                    </div>
+                                </div>
+                                <div class="text-stone-400 group-hover:text-amber-600"><i data-lucide="external-link"></i></div>
+                            </a>
+                            <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/A2_FichaESP.pdf" target="_blank" class="file-card block bg-stone-50 p-4 rounded-lg border border-stone-200 hover:shadow-md flex items-center justify-between group">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-amber-100 p-3 rounded-full text-amber-700 group-hover:bg-amber-200"><i data-lucide="file-text"></i></div>
+                                    <div>
+                                        <h5 class="font-bold text-stone-800">Ficha Técnica Español (A2)</h5>
+                                        <p class="text-xs text-stone-500">PDF • Versión Original</p>
+                                    </div>
+                                </div>
+                                <div class="text-stone-400 group-hover:text-amber-600"><i data-lucide="external-link"></i></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ANEXO B -->
+                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden">
+                        <div class="bg-stone-800 p-4 text-white">
+                            <h4 class="font-bold flex items-center gap-2"><i data-lucide="network"></i> Anexo B: Mapas Conceptuales</h4>
+                        </div>
+                        <div class="p-6 grid md:grid-cols-2 gap-4">
+                            <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/B1_Mapa1.pdf" target="_blank" class="file-card w-full text-left bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md flex items-center gap-3">
+                                <i data-lucide="map" class="text-stone-400"></i>
+                                <span class="text-sm font-medium">B.1. Sesión 1: Internacionalización</span>
+                            </a>
+                            <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/B1_Mapa2.pdf" target="_blank" class="file-card w-full text-left bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md flex items-center gap-3">
+                                <i data-lucide="map" class="text-stone-400"></i>
+                                <span class="text-sm font-medium">B.2. Sesión 2: Mercados Globales</span>
+                            </a>
+                            <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/B1_Mapa3.pdf" target="_blank" class="file-card w-full text-left bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md flex items-center gap-3">
+                                <i data-lucide="map" class="text-stone-400"></i>
+                                <span class="text-sm font-medium">B.3. Sesión 3: Perfil Producto-Mercado</span>
+                            </a>
+                            <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/B1_Mapa4.pdf" target="_blank" class="file-card w-full text-left bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md flex items-center gap-3">
+                                <i data-lucide="map" class="text-stone-400"></i>
+                                <span class="text-sm font-medium">B.4. Sesión 4: Análisis Mercados</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ANEXO C -->
+                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden">
+                        <div class="bg-stone-800 p-4 text-white">
+                            <h4 class="font-bold flex items-center gap-2"><i data-lucide="folder-open"></i> Anexo C: Documentación</h4>
+                        </div>
+                        <div class="p-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Items -->
+                            <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/C1_cGMP.pdf" target="_blank" class="file-card flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md">
+                                <i data-lucide="award" class="text-green-600 w-5 h-5"></i>
+                                <div class="text-left">
+                                    <p class="text-sm font-bold">C.1. Certificado cGMP</p>
+                                    <p class="text-xs text-gray-500">Buenas Prácticas</p>
+                                </div>
+                            </a>
+                             <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/C2_CLV.pdf" target="_blank" class="file-card flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md">
+                                <i data-lucide="file-check-2" class="text-blue-600 w-5 h-5"></i>
+                                <div class="text-left">
+                                    <p class="text-sm font-bold">C.2. Certificado CLV</p>
+                                    <p class="text-xs text-gray-500">Libre Venta</p>
+                                </div>
+                            </a>
+                             <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/C3_CoA.pdf" target="_blank" class="file-card flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md">
+                                <i data-lucide="flask-conical" class="text-purple-600 w-5 h-5"></i>
+                                <div class="text-left">
+                                    <p class="text-sm font-bold">C.3. Certificado CoA</p>
+                                    <p class="text-xs text-gray-500">Análisis de Lab</p>
+                                </div>
+                            </a>
+                             <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/C4_Invoice.pdf" target="_blank" class="file-card flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md">
+                                <i data-lucide="dollar-sign" class="text-stone-600 w-5 h-5"></i>
+                                <div class="text-left">
+                                    <p class="text-sm font-bold">C.4. Invoice</p>
+                                    <p class="text-xs text-gray-500">Factura Comercial</p>
+                                </div>
+                            </a>
+                             <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/C5_Packing.pdf" target="_blank" class="file-card flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md">
+                                <i data-lucide="list-checks" class="text-stone-600 w-5 h-5"></i>
+                                <div class="text-left">
+                                    <p class="text-sm font-bold">C.5. Packing List</p>
+                                    <p class="text-xs text-gray-500">Lista de Empaque</p>
+                                </div>
+                            </a>
+                             <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/C6_BL.pdf" target="_blank" class="file-card flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md">
+                                <i data-lucide="ship" class="text-blue-800 w-5 h-5"></i>
+                                <div class="text-left">
+                                    <p class="text-sm font-bold">C.6. Bill of Lading</p>
+                                    <p class="text-xs text-gray-500">Conocimiento Embarque</p>
+                                </div>
+                            </a>
+                             <a href="https://raw.githubusercontent.com/RickNE7/ShotMaca/main/C7_Poliza.pdf" target="_blank" class="file-card flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-200 hover:shadow-md">
+                                <i data-lucide="shield" class="text-red-600 w-5 h-5"></i>
+                                <div class="text-left">
+                                    <p class="text-sm font-bold">C.7. Seguro</p>
+                                    <p class="text-xs text-gray-500">Póliza Transporte</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
