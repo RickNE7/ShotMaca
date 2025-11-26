@@ -19,6 +19,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Animación para barras de gráficos */
+        @keyframes growWidth {
+            from { width: 0; }
+            to { width: var(--target-width); }
+        }
+        
+        .chart-bar {
+            animation: growWidth 1.5s ease-out forwards;
+        }
+
         /* Estilos para las pestañas */
         .tab-btn.active {
             color: #d97706; /* amber-600 */
@@ -80,7 +90,7 @@
                 <i data-lucide="zap" class="w-5 h-5"></i> El Producto
             </button>
             <button onclick="switchTab('mercado')" class="tab-btn flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-mercado">
-                <i data-lucide="globe" class="w-5 h-5"></i> Mercado (USA)
+                <i data-lucide="bar-chart-2" class="w-5 h-5"></i> Mercado (USA)
             </button>
             <button onclick="switchTab('pestel')" class="tab-btn flex items-center gap-2 px-6 py-4 font-medium transition-colors whitespace-nowrap text-stone-500 hover:text-stone-800 hover:bg-stone-50" id="btn-pestel">
                 <i data-lucide="brain" class="w-5 h-5"></i> Análisis PESTEL
@@ -176,9 +186,10 @@
                 </div>
             </div>
 
-            <!-- TAB: MERCADO -->
+            <!-- TAB: MERCADO (Actualizado con Gráficos) -->
             <div id="tab-mercado" class="tab-content hidden animate-fade-in">
-                <div class="space-y-6">
+                <div class="space-y-8">
+                    <!-- Encabezado Mercado -->
                     <div class="bg-gradient-to-r from-blue-900 to-stone-900 p-8 rounded-2xl text-white flex flex-col md:flex-row justify-between items-center shadow-lg">
                         <div>
                             <h3 class="text-3xl font-bold mb-2 flex items-center gap-2">
@@ -192,18 +203,78 @@
                         </div>
                     </div>
        
+                    <!-- Sección Gráficos Interactivos -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
+                        <h4 class="font-bold text-stone-800 mb-6 flex items-center gap-2"><i data-lucide="bar-chart" class="text-amber-600"></i> Tendencias de Crecimiento (CAGR)</h4>
+                        
+                        <div class="space-y-6">
+                            <!-- Bar 1 -->
+                            <div class="group cursor-pointer">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="font-medium text-stone-700">Alimentos Funcionales (EE.UU.)</span>
+                                    <span class="font-bold text-amber-600">10.33%</span>
+                                </div>
+                                <div class="w-full bg-stone-100 rounded-full h-4 overflow-hidden">
+                                    <div class="chart-bar bg-amber-500 h-4 rounded-full group-hover:bg-amber-600 transition-colors relative" style="--target-width: 85%;">
+                                        <div class="absolute top-0 right-0 transform translate-x-full opacity-0 group-hover:opacity-100 transition-opacity bg-stone-800 text-white text-xs rounded py-1 px-2 -mt-1 ml-2">Crecimiento proyectado a 2032</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bar 2 -->
+                            <div class="group cursor-pointer">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="font-medium text-stone-700">Suplementos tipo Gomita/Jelly</span>
+                                    <span class="font-bold text-blue-600">9.21%</span>
+                                </div>
+                                <div class="w-full bg-stone-100 rounded-full h-4 overflow-hidden">
+                                    <div class="chart-bar bg-blue-500 h-4 rounded-full group-hover:bg-blue-600 transition-colors relative" style="--target-width: 75%;">
+                                        <div class="absolute top-0 right-0 transform translate-x-full opacity-0 group-hover:opacity-100 transition-opacity bg-stone-800 text-white text-xs rounded py-1 px-2 -mt-1 ml-2">Formato de mayor demanda</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bar 3 -->
+                            <div class="group cursor-pointer">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="font-medium text-stone-700">Mercado Maca Negra</span>
+                                    <span class="font-bold text-stone-600">6.0%</span>
+                                </div>
+                                <div class="w-full bg-stone-100 rounded-full h-4 overflow-hidden">
+                                    <div class="chart-bar bg-stone-500 h-4 rounded-full group-hover:bg-stone-600 transition-colors relative" style="--target-width: 50%;">
+                                        <div class="absolute top-0 right-0 transform translate-x-full opacity-0 group-hover:opacity-100 transition-opacity bg-stone-800 text-white text-xs rounded py-1 px-2 -mt-1 ml-2">Nicho específico</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-6 text-center italic">Fuentes: Grand View Research, Fortune Business Insights, Future Market Insights (2024-2025)</p>
+                    </div>
+
+                    <!-- Datos Clave (Cards) -->
                     <div class="grid md:grid-cols-3 gap-4">
                         <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-amber-500">
-                            <h4 class="font-bold text-stone-800 mb-2">Tamaño & Madurez</h4>
-                            <p class="text-sm text-gray-600">EE.UU. representa >90% del mercado de Norteamérica. Consumidor educado en "Superfoods".</p>
+                            <h4 class="font-bold text-stone-800 mb-2">Dominio de Mercado</h4>
+                            <div class="flex items-end gap-2">
+                                <span class="text-4xl font-bold text-stone-800">35%</span>
+                                <span class="text-sm text-gray-500 mb-1">Cuota Norteamérica</span>
+                            </div>
+                            <p class="text-xs text-gray-600 mt-2">EE.UU. lidera el consumo de productos de maca en la región.</p>
                         </div>
                         <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-amber-500">
-                            <h4 class="font-bold text-stone-800 mb-2">Formato Gummy/Jelly</h4>
-                            <p class="text-sm text-gray-600">Preferencia masiva por masticables. Mercado >$10 mil millones proyectado.</p>
+                            <h4 class="font-bold text-stone-800 mb-2">Potencial de Gomitas</h4>
+                            <div class="flex items-end gap-2">
+                                <span class="text-4xl font-bold text-stone-800">>$10B</span>
+                                <span class="text-sm text-gray-500 mb-1">Valor Mercado</span>
+                            </div>
+                            <p class="text-xs text-gray-600 mt-2">Preferencia masiva por formatos masticables frente a pastillas.</p>
                         </div>
                         <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-amber-500">
-                            <h4 class="font-bold text-stone-800 mb-2">Diáspora Latina</h4>
-                            <p class="text-sm text-gray-600">California es la puerta de entrada. Alta afinidad cultural con productos andinos.</p>
+                            <h4 class="font-bold text-stone-800 mb-2">Factor Demográfico</h4>
+                            <div class="flex items-center gap-2 mt-2">
+                                <i data-lucide="users" class="text-amber-500 w-8 h-8"></i>
+                                <span class="font-bold text-stone-700">Diáspora Latina</span>
+                            </div>
+                            <p class="text-xs text-gray-600 mt-2">California es la puerta de entrada cultural para superfoods andinos.</p>
                         </div>
                     </div>
                 </div>
@@ -548,8 +619,13 @@
 
         <!-- FOOTER -->
         <footer class="bg-stone-900 text-stone-400 p-6 text-center text-sm">
-            <p>© 2025 Grupo 2 | Basado en "Tarea Grupal 1 (borrador 3).pdf"</p>
-            <p class="text-xs mt-1 text-stone-600">Integrantes: Nicolás Córdiva, Marilin Medina, Eric Mozombite, Ashly Rosas, Celeste Taya, Milagros Tornero</p>
+            <p>
+                © 2025 Grupo 2 | Basado en 
+                <button onclick="openPdfViewer('https://rickne7.github.io/ShotMaca/Tarea%20Grupal%201%20-%20Grupo%202.pdf')" class="text-amber-600 hover:underline hover:text-amber-500 font-medium transition-colors">
+                    "Tarea Grupal 1 - Grupo 2.pdf"
+                </button>
+            </p>
+            <p class="text-xs mt-2 text-stone-600">Integrantes: Nicolás Córdova, Marilin Medina, Eric Mozombite, Ashly Rosas, Celeste Taya, Milagros Tornero.</p>
         </footer>
     </div>
 
